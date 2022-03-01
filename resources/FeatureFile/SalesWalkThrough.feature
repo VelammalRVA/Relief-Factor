@@ -1,6 +1,5 @@
 Feature: Verifying saleswalkthrough in Magnento and place order
-  I want to use this template for my feature file
-
+ 
   Scenario Outline: Placing Order with Saleswalkthrough in Magnento website
     Given Launching ReliefFactor URL
     When Entering "<UserName>","<Password>" and click Login button
@@ -25,4 +24,4 @@ Feature: Verifying saleswalkthrough in Magnento and place order
 
     Examples: 
       | UserName   | Password | FirstName | LastName | StreetAddress   | City      | Country       | State      | PostalCode | Telephone  | CardNumber          | ExpiryMonth  | ExpiryYear | CVV |
-      | testuser01 | test123  | Chandler  | Bong     | 1 Apple ParkWay | Cupertino | United States | California |      95014 | 1234567846 | 4000 0000 0000 0002 | 01 - January |       2027 | 456 |
+      | testuser01 | test123  | Chadle    | Bo       | 1 Apple ParkWay | Cupertino | United States | California |      95014 | 1234567846 | 4000 0000 0000 0002 | 01 - January |       2027 | 456 |

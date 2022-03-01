@@ -1,5 +1,6 @@
 package SalesWalkThrough;
 
+import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -192,12 +193,20 @@ public class StepDefnSalesWalkThru {
 		Thread.sleep(10000);
 		WebElement orderNoLink = driver.findElement(By.xpath("//*[@id=\"messages\"]/div/div/div/a[1]"));
 		orderNoLink.click();
+		String parentWindow = driver.getWindowHandle();
+		Set<String> windowHandles = driver.getWindowHandles();
 
-		Set<String> windows = driver.getWindowHandles();
-		System.out.println(windows); 
+		Iterator<String> i = windowHandles.iterator();
 
-		Thread.sleep(1000);
-		driver.quit();
-
+		while (i.hasNext()) {
+			String childWindow = i.next();
+			if (!parentWindow.equalsIgnoreCase(childWindow)) {
+				driver.switchTo().window(childWindow);
+				Thread.sleep(5000);
+				WebElement orderStatus = driver.findElement(By.xpath("//*/th[contains(text(),'Order Status')]/following::td/span[@id='order_status']"));
+				System.out.println(orderStatus.getText());
+				driver.quit();
+			}
+		}
 	}
 }
